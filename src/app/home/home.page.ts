@@ -17,6 +17,7 @@ export class HomePage {
     http.get<any>(this.url)
       .subscribe(pokeData => {
         this.list = pokeData.results;
+        this.list.sort((a, b) => a.name > b.name ? 1 : -1);
         this.filteredList = [...this.list];
       });
   }
