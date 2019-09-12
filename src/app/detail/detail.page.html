@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ pokename | titlecase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-avatar style="margin: 0 auto;">
+    <ion-img [src]="pokeDetails.sprites?.front_default" style="border-radius: 50%; border: 1px darkgrey solid"></ion-img>
+  </ion-avatar>
+
+  <ion-card [style.background-color]="'white'">
+
+    <ion-card-header>
+      <ion-card-title>{{ pokename | titlecase }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="ion-justify-content-center">
+
+      <p>
+        Abilities:
+        <span *ngFor="let ability of pokeDetails.abilities; let isLast = last">
+          {{ ability?.ability.name }}{{ isLast ? "" : ", " }}
+        </span>
+      </p>
+
+      <p>
+        Types:
+        <span *ngFor="let pokeType of pokeDetails.types; let isLast = last">
+          {{ pokeType?.type.name }}{{ isLast ? "" : ", " }}
+        </span>
+      </p>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
