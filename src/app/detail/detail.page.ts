@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ToastController} from '@ionic/angular';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,8 @@ export class DetailPage implements OnInit {
   avatarButtonStyle = {
     'height': '60vw',
     'width': '60vw',
+    'max-height': '200px',
+    'max-width': '200px',
     'margin': '0 auto',
     'background-color': 'white',
     'border-radius': '50%',
@@ -29,10 +32,8 @@ export class DetailPage implements OnInit {
     // read parameter from web address
     this.pokename = this.route.snapshot.paramMap.get('pokename');
     this.http.get<any>(this.url + this.pokename)
-      .subscribe(pokeData => {
-        this.pokeDetails = pokeData;
-        console.log(pokeData);
-      });
+      .pipe(take(1))
+      .subscribe(pokeData => this.pokeDetails = pokeData);
   }
 
   async clickAvatar(pokeName) {

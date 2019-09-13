@@ -11,11 +11,11 @@
 
   <ion-buttons>
     <ion-button [ngStyle]="avatarButtonStyle" (click)="clickAvatar(pokename)">
-      <ion-img [src]="pokeDetails?.sprites?.front_default" style="height: 60vw; width: 60vw;"></ion-img>
+      <ion-img [src]="pokeDetails?.sprites?.front_default" style="height: 60vw; width: 60vw; max-height: 200px; max-width: 200px;"></ion-img>
     </ion-button>
   </ion-buttons>
 
-  <ion-card [style.background-color]="'white'">
+  <ion-card [ngStyle]="{'background-color':'white', 'max-width': '600px', 'margin': '24px auto'}">
 
     <ion-card-header>
       <ion-card-title>{{ pokename | titlecase }}</ion-card-title>

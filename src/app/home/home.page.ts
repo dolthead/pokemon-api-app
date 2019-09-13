@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomePage {
 
   constructor(private http: HttpClient, private router: Router) {
     http.get<any>(this.url)
+      .pipe(take(1))
       .subscribe(pokeData => {
         this.list = pokeData.results;
         this.list.sort((a, b) => a.name > b.name ? 1 : -1);
