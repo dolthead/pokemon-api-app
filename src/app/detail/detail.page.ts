@@ -42,7 +42,7 @@ export class DetailPage implements OnInit {
         message: 'What?',
         position: 'top',
         color: 'light',
-        duration: 300
+        duration: 300, // milliseconds = .3 seconds
       }
     );
     toast.present();
